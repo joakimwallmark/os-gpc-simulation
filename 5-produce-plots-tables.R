@@ -175,10 +175,11 @@ item_plot2
 
 # Average bias over arc length --------------------------------------------
 sapply(scenarios, function(x) x$name)
-scen_ind <- 15
 scen_ind <- 25
 scen_ind <- 22
 scen_ind <- 21
+scen_ind <- 16
+scen_ind <- 15
 scenarios[[scen_ind]]$name
 scenar <- scenarios[[scen_ind]]
 file_name <- paste("simulation-data/measures/", scenar$name, ".RData", sep = "")
@@ -242,11 +243,15 @@ plot_norm3 <- plot3
 ggsave(paste("plots/sim-item-bias-rmse-", scenarios[[scen_ind]]$name, ".eps", sep = ""), plot = plot/plot3, width = 21-2*2.54, height = 11.5, units = "cm")
 
 plot_norm <- plot_norm+ylab("Bias")+ggtitle("Dataset population")+ theme(plot.title = element_text(hjust = 0.5, size=10, face="bold"), axis.title=element_text(size=9))
-plot <- plot+ylab("Bias")+ggtitle("Dataset population")+ theme(plot.title = element_text(hjust = 0.5, size=10, face="bold"), axis.title=element_text(size=9))
-plot_norm3 <- plot_norm3+ylab("RMSE")+ggtitle("Skewed population")+ theme(plot.title = element_text(hjust = 0.5, size=10, face="bold"), axis.title=element_text(size=9))
-plot3 <- plot3+ylab("RMSE")+ggtitle("Skewed population")+ theme(plot.title = element_text(hjust = 0.5, size=10, face="bold"), axis.title=element_text(size=9))
+plot_norm <- plot_norm + scale_y_continuous(limits = c(0, 0.08))
+plot <- plot + ylab("Bias")+ggtitle("Skewed population")+ theme(plot.title = element_text(hjust = 0.5, size=10, face="bold"), axis.title=element_text(size=9))
+plot <- plot + scale_y_continuous(limits = c(0, 0.08))
+plot_norm3 <- plot_norm3+ylab("RMSE")+ggtitle("Dataset population")+ theme(plot.title = element_text(hjust = 0.5, size=10, face="bold"), axis.title=element_text(size=9))
+plot_norm3 <- plot_norm3 + scale_y_continuous(limits = c(0.04, 0.1))
+plot3 <- plot3 + ylab("RMSE")+ggtitle("Skewed population")+ theme(plot.title = element_text(hjust = 0.5, size=10, face="bold"), axis.title=element_text(size=9))
+plot3 <- plot3 + scale_y_continuous(limits = c(0.04, 0.1))
 plot_norm/plot/plot_norm3/plot3
-ggsave(paste("plots/sim-item-bias-rmse-comp-", scenarios[[scen_ind]]$name, ".eps", sep = ""), 
+ggsave(paste("plots/sim-item-bias-rmse-comp.eps", sep = ""), 
        plot = plot_norm/plot/plot_norm3/plot3, width = 21-2*2.54, height = 25-2*2.54, units = "cm")
 
 
