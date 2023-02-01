@@ -20,7 +20,7 @@ for (sn in seq_along(scenarios)) {
 
     sim_mirt_mod <- mirt(data = data, model = 1, itemtype = "gpcm", SE = FALSE)
 
-    dl <- make.dataList(data + 1,
+    dl <- make_dataList(data + 1,
       key = NULL, opt_list, nbin = scen$bins,
       NumBasis = scen$basis, Wnorder = scen$spline_order
     )

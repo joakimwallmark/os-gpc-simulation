@@ -1,6 +1,6 @@
 source("1-sim-setup.R")
-source("functions/simulation_tables.R")
-source("functions/simulation_plots.R")
+source("functions/simulation-tables.R")
+source("functions/simulation-plots.R")
 library(xtable)
 
 print("Producing measure plots and tables")
@@ -46,7 +46,6 @@ for (sn in seq_along(scenarios)) {
   file_name <- paste("simulation-data/measures/", scen$name, ".RData", sep = "")
   load(file = file_name)
 
-  # x <- scen$true_ability_list$entr_dist
   x <- scen$true_ability_list$surp_al
 
   p1_kldi <- sim_fit_plot_kl(x, all_items_measures, 1:2, "Arc length", "KL divergence")

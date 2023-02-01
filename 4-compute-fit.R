@@ -1,5 +1,5 @@
 source("1-sim-setup.R")
-source("functions/sim_measures.R")
+source("functions/sim-measures.R")
 
 print("Calculating fit MSE/KL...")
 cl <- makeCluster(min(detectCores(logical = FALSE), 4)) # Too many cores needs too much RAM memory

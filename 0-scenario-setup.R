@@ -2,9 +2,9 @@ library(patchwork)
 library(mirt)
 library(TestGardener)
 library(sn)
-source("functions/tg_density.R")
-source("functions/arc_length.R")
-source("functions/get_abs_distance.R")
+source("functions/tg-density.R")
+source("functions/arc-length.R")
+source("functions/get-abs-distance.R")
 
 # skew normal parameters
 xi <- 1.5 # location
@@ -45,9 +45,9 @@ test_takers[[4]] <- sort(rsn(5000, xi, omega, alpha))
 test_takers_pop <- c("normal", "skewed", "normal", "skewed", "normal", "skewed")
 
 # Load models -------------------------------------------------------------
-load(paste("simulation-data/sim_", data_string, "_mirt_mod.RData", sep = ""))
-load(paste("simulation-data/sim_", data_string, "_tg_mod.RData", sep = ""))
-load(paste("simulation-data/sim_", data_string, "_item_data.RData", sep = ""))
+load(paste("simulation-data/sim-", data_string, "-mirt-mod.RData", sep = ""))
+load(paste("simulation-data/sim-", data_string, "-tg-mod.RData", sep = ""))
+load(paste("simulation-data/sim-", data_string, "-item-data.RData", sep = ""))
 
 # OS population theta density ---------------------------------------------
 set.seed(131) # donno why density spline is random...
@@ -185,4 +185,3 @@ for (length in test_lengths) {
 }
 
 save(scenarios, file = paste("simulation-data/sim-", data_string, "-scenarios.RData", sep = ""))
-load(file = paste("simulation-data/sim-", data_string, "-scenarios.RData", sep = ""))
