@@ -23,7 +23,7 @@ sim_fit_models <- function(sample, tg_items, tg_bins, tg_basis,
   # fit mirt model to data -----------------------------------------
   mirt_mod <- mirt(data = sample, model = 1, itemtype = "gpcm")
   # fit test gardener model to data -----------------------------------------
-  dl <- make.dataList(
+  dl <- make_dataList(
     U = sample + 1,
     key = NULL,
     optList = list(itemLab = NULL, optLab = NULL, optScr = tg_opt_score),
