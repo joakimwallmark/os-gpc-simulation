@@ -1,3 +1,5 @@
+To ensure reproducible code, the project uses [renv](https://github.com/rstudio/renv). When the project folder is opened on your local machine in R-studio, the required packages with the correct versions will be automatically installed.
+
 # Instructions for replicating simulation study
 - Run 0-scenario-setup.R to setup the simulated scenarios.
 - Run 1-sim-setup.R to load scenarios from the previous step as well as some additional setup.
