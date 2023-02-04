@@ -1,4 +1,4 @@
-To ensure reproducible code, the project uses [renv](https://github.com/rstudio/renv). When the project folder is opened on your local machine in R-studio, the required packages with the correct versions will be automatically installed.
+To ensure reproducible code, the project uses [renv](https://github.com/rstudio/renv). When the project folder is opened in R-studio on your local machine, the required packages with the correct versions will be automatically installed in a local environment, without affecting your existing global R environment.
 
 # Instructions for replicating simulation study
 - Run 0-scenario-setup.R to setup the simulated scenarios.
