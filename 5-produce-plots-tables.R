@@ -235,11 +235,11 @@ plot <- ggplot(df, aes(x = x, y = biases, color = Model)) +
   xlab("% Arc length") +
   ylab("Avg. abs. probability bias") +
   scale_x_continuous(
-    limits = c(NA, NA),
+    limits = c(0, NA),
     expand = expansion(mult = c(0.025, 0.025), add = c(0, 0))
   ) +
   scale_y_continuous(
-    limits = c(NA, NA),
+    limits = c(0, 0.09),
     expand = expansion(mult = c(0.05, 0.05), add = c(0, 0))
   ) +
   scale_color_grey(start = 0.1, end = 0.4, name = "")
@@ -251,11 +251,11 @@ plot2 <- ggplot(df, aes(x = x, y = ses, color = Model)) +
   xlab("% Arc length") +
   ylab("Avg. probability SE") +
   scale_x_continuous(
-    limits = c(NA, NA),
+    limits = c(0, NA),
     expand = expansion(mult = c(0.025, 0.025), add = c(0, 0))
   ) +
   scale_y_continuous(
-    limits = c(NA, NA),
+    limits = c(0, 0.09),
     expand = expansion(mult = c(0.05, 0.05), add = c(0, 0))
   ) +
   scale_color_grey(start = 0.1, end = 0.4, name = "")
@@ -267,11 +267,11 @@ plot3 <- ggplot(df, aes(x = x, y = rmses, color = Model)) +
   xlab("% Arc length") +
   ylab("Avg. probability RMSE") +
   scale_x_continuous(
-    limits = c(NA, NA),
+    limits = c(0, NA),
     expand = expansion(mult = c(0.025, 0.025), add = c(0, 0))
   ) +
   scale_y_continuous(
-    limits = c(NA, NA),
+    limits = c(0, 0.09),
     expand = expansion(mult = c(0.05, 0.05), add = c(0, 0))
   ) +
   scale_color_grey(start = 0.1, end = 0.4, name = "")
@@ -293,7 +293,7 @@ plot_norm <-
     axis.title = element_text(size = 9)
   )
 plot <-
-  plot + ylab("Bias") + ggtitle("Dataset population") + theme(
+  plot + ylab("Bias") + ggtitle("Skewed population") + theme(
     plot.title = element_text(hjust = 0.5, size = 10, face = "bold"),
     axis.title = element_text(size = 9)
   )
@@ -303,11 +303,19 @@ plot_norm3 <-
     axis.title = element_text(size = 9)
   )
 plot3 <-
-  plot3 + ylab("RMSE") + ggtitle("Skewed population") + theme(
+  plot3 + ylab("RMSE") + ggtitle("Dataset population") + theme(
     plot.title = element_text(hjust = 0.5, size = 10, face = "bold"),
     axis.title = element_text(size = 9)
   )
-plot_norm / plot / plot_norm3 / plot3
-ggsave(paste("plots/sim-item-bias-rmse-comp-", scenarios[[scen_ind]]$name, ".eps", sep = ""),
+plot_norm <- plot_norm + guides(color = guide_legend(override.aes = list(size = 2)))
+plot <- plot + guides(color = guide_legend(override.aes = list(size = 2)))
+plot_norm3 <- plot_norm3 + guides(color = guide_legend(override.aes = list(size = 2)))
+plot3 <- plot3 + guides(color = guide_legend(override.aes = list(size = 2)))
+plot_norm / plot / plot_norm3 / plot3 + plot_layout(guides = 'collect') 
+plot_norm+guides(color = guide_legend(override.aes = list(size = 5)))
+ggsave(paste("plots/sim-item-bias-rmse-comp.eps", sep = ""),
+  plot = plot_norm / plot / plot_norm3 / plot3, width = 21 - 2 * 2.54, height = 25 - 2 * 2.54, units = "cm"
+)
+ggsave(paste("plots/sim-item-bias-rmse-comp.jpg", sep = ""),
   plot = plot_norm / plot / plot_norm3 / plot3, width = 21 - 2 * 2.54, height = 25 - 2 * 2.54, units = "cm"
 )
