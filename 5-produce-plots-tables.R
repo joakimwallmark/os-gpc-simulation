@@ -225,7 +225,7 @@ os_rmse <- rowMeans(sapply(all_items_measures$avg_os_rmse, function(x) {
 biases <- c(mirt_bias, os_bias)
 ses <- c(mirt_se, os_se)
 rmses <- c(mirt_rmse, os_rmse)
-model <- c(rep("GPC", length(x)), rep("Optimal score", length(x)))
+model <- c(rep("GPC", length(x)), rep("Optimal scoring", length(x)))
 df <- data.frame(x = x, biases = biases, ses = ses, rmses = rmses, Model = model)
 
 plot <- ggplot(df, aes(x = x, y = biases, color = Model)) +
@@ -311,7 +311,7 @@ plot_norm <- plot_norm + guides(color = guide_legend(override.aes = list(size = 
 plot <- plot + guides(color = guide_legend(override.aes = list(size = 2)))
 plot_norm3 <- plot_norm3 + guides(color = guide_legend(override.aes = list(size = 2)))
 plot3 <- plot3 + guides(color = guide_legend(override.aes = list(size = 2)))
-plot_norm / plot / plot_norm3 / plot3 + plot_layout(guides = 'collect') 
+plot_norm / plot / plot_norm3 / plot3
 plot_norm+guides(color = guide_legend(override.aes = list(size = 5)))
 ggsave(paste("plots/sim-item-bias-rmse-comp.eps", sep = ""),
   plot = plot_norm / plot / plot_norm3 / plot3, width = 21 - 2 * 2.54, height = 25 - 2 * 2.54, units = "cm"
