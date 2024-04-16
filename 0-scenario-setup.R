@@ -12,22 +12,6 @@ omega <- 1.2 # scale (~variance)
 alpha <- -4 # shape
 max_surp <- 20 # needs to match sim-setup.R file...
 
-# NATMAT ------------------------------------------------------------------
-data_string <- "natmat18"
-test_lengths <- c(14, 28)
-props_os_items <- c(1, 0.5, 0)
-nbins <- 10 # Match original model
-nbasis <- 6
-spline_order <- 4
-# sample test takers ------------------------------------------------------
-set.seed(12335)
-test_takers <- list()
-test_takers[[1]] <- sort(rnorm(1000))
-test_takers[[2]] <- sort(rsn(1000, xi, omega, alpha))
-test_takers[[3]] <- sort(rnorm(5000))
-test_takers[[4]] <- sort(rsn(5000, xi, omega, alpha))
-test_takers_pop <- c("normal", "skewed", "normal", "skewed")
-
 # SWESAT ------------------------------------------------------------------
 data_string <- "swesat14"
 test_lengths <- c(30, 60)
@@ -50,7 +34,7 @@ load(paste("simulation-data/sim-", data_string, "-tg-mod.RData", sep = ""))
 load(paste("simulation-data/sim-", data_string, "-item-data.RData", sep = ""))
 
 # OS population theta density ---------------------------------------------
-set.seed(131) # donno why density spline is random...
+set.seed(131)
 data_dens <- tg_theta_density(c(os_mod$parList[[10]]$theta), alpha = 1.5)
 data_dens$plot
 
