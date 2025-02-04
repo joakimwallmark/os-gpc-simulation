@@ -1,4 +1,4 @@
-source("1-sim-setup.R")
+source("sim-setup.R")
 source("functions/sim-measures.R")
 
 print("Calculating fit MSE/KL...")

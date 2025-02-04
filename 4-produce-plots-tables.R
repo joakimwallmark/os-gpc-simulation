@@ -1,4 +1,4 @@
-source("1-sim-setup.R")
+source("sim-setup.R")
 source("functions/simulation-tables.R")
 source("functions/simulation-plots.R")
 library(xtable)

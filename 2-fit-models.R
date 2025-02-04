@@ -1,4 +1,4 @@
-source("1-sim-setup.R")
+source("sim-setup.R")
 
 # Fit models --------------------------------------------------------------
 item_score_start <- 0

@@ -1,4 +1,4 @@
-source("1-sim-setup.R")
+source("sim-setup.R")
 
 # Generate data -----------------------------------------------------------
 print("Generating data...")
